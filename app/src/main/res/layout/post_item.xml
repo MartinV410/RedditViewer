@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+
+
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="post"
+            type="com.example.redditviewer.network.PostData"/>
+        <variable
+            name="contentType"
+            type="com.example.redditviewer.network.PostContentType"/>
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/post_item_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/gray_1"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <!--SUBREDDIT AND POSTER INFO-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/post_item_layout_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/post_item_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{post.title}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_medium"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/post_item_subreddit_icon" />
+
+                <TextView
+                    android:id="@+id/post_item_subreddit_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{post.subreddit.namePrefixed}"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_small"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/post_item_subreddit_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/post_item_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{post.author}"
+                    android:textColor="@color/text_muted"
+                    android:textSize="@dimen/text_small"
+                    app:layout_constraintStart_toEndOf="@+id/post_item_subreddit_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/post_item_subreddit_name" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/post_item_subreddit_icon"
+                    android:layout_width="@dimen/icon_medium"
+                    android:layout_height="@dimen/icon_medium"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/circle_image"
+                    app:iconUrl="@{post.subreddit.iconUrl}"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <!--MAIN CONTENT-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.517"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_item_layout_top"
+                app:layout_constraintVertical_bias="0.0">
+
+                <!--VIDEO AS CONTENT-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@+id/post_item_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <com.google.android.exoplayer2.ui.PlayerView
+                        android:id="@+id/post_item_video"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="gone" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <!--LINK AS CONTENT-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/post_item_layout_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/post_item_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setLinkContentVisible="@{post}"
+                    tools:visibility="gone">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/post_item_link_thumbnail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/test_image"
+                        app:imageUrl="@{post.linkThumbnailUrl}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        app:postData="@{post}"
+                        app:requiredPostContentType="@{contentType.LINK}"
+                        app:shapeAppearanceOverlay="@style/rounded_image" />
+
+                    <TextView
+                        android:id="@+id/post_item_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_textview"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_small"
+                        app:layout_constraintBottom_toBottomOf="@+id/post_item_link_thumbnail"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        app:postData="@{post}"
+                        app:requiredPostContentType="@{contentType.LINK}"
+                        app:text="@{post.urlDest}" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--TEXT AS CONTENT-->
+                <TextView
+                    android:id="@+id/post_item_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_textview"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+
+                    android:textSize="@dimen/text_small"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:text="@{post.text}"
+                    tools:visibility="visible" />
+
+<!--                <com.google.android.material.imageview.ShapeableImageView-->
+<!--                    android:id="@+id/post_item_image"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:adjustViewBounds="true"-->
+<!--                    android:scaleType="fitCenter"-->
+
+<!--                    android:src="@drawable/test_image"-->
+<!--                    android:visibility="gone"-->
+<!--                    app:imageUrl="@{post.urlDest}"-->
+<!--                    app:layout_constrainedHeight="true"-->
+<!--                    app:layout_constraintBottom_toTopOf="@+id/post_item_text"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:postData="@{post}"-->
+
+<!--                    app:requiredPostContentType="@{contentType.IMAGE}"-->
+<!--                    app:shapeAppearanceOverlay="@style/rounded_image"-->
+<!--                    tools:visibility="gone" />-->
+
+                <!--IMAGES AS CONTENT-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/post_item_image_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="true"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/post_item_text"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setImageContentVisible="@{post}"
+                    tools:visibility="visible">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/post_item_viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <me.relex.circleindicator.CircleIndicator
+                        android:id="@+id/post_item_indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--BOTTOM BUTTONS-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/post_item_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@color/gray_2"
+                    android:minWidth="0dp"
+                    android:paddingHorizontal="10dp"
+                    app:cornerRadius="@dimen/radius_small"
+                    app:iconSize="@dimen/icon_tiny"
+                    app:icon="@drawable/share"
+                    app:iconPadding="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/post_item_comments"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/post_item_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/gray_2"
+                    android:paddingHorizontal="10dp"
+                    android:text="@{Integer.toString(post.comments)}"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_small"
+                    app:cornerRadius="@dimen/radius_small"
+                    app:iconSize="@dimen/icon_tiny"
+                    app:icon="@drawable/outline_mode_comment_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/post_item_vote" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/post_item_vote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/gray_2"
+                    android:drawableLeft="@drawable/upvote"
+                    android:drawableRight="@drawable/downvote"
+                    android:paddingHorizontal="10dp"
+                    android:text="@{Integer.toString(post.score)}"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_small"
+                    app:cornerRadius="@dimen/radius_small"
+                    app:iconSize="@dimen/icon_tiny"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:voteTint="@{post.voted}"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

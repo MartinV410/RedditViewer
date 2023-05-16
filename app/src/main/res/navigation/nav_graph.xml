@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentLogin2">
+
+    <fragment
+        android:id="@+id/subredditActivity"
+        android:name="com.example.redditviewer.ui.SubredditFragment"
+        android:label="SubredditActivity" >
+        <action
+            android:id="@+id/action_subredditActivity_to_subredditSortBottomSheetFragment2"
+            app:destination="@id/subredditSortBottomSheetFragment2" />
+        <action
+            android:id="@+id/action_subredditActivity_to_imageGalleryFragment"
+            app:destination="@id/imageGalleryFragment" />
+        <action
+            android:id="@+id/action_subredditActivity_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+
+        <argument
+            android:name="subreddit"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_subredditActivity_to_postCommentsFragment"
+            app:destination="@id/postCommentsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_subredditActivity_to_userInfoBottomSheetFragment"
+            app:destination="@id/userInfoBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/subredditSortBottomSheetFragment2"
+        android:name="com.example.redditviewer.ui.SubredditSortBottomSheetFragment"
+        android:label="SubredditSortBottomSheetFragment" >
+        <action
+            android:id="@+id/action_subredditSortBottomSheetFragment2_to_subredditActivity"
+            app:destination="@id/subredditActivity" />
+        <action
+            android:id="@+id/action_subredditSortBottomSheetFragment2_to_subredditTimeframeBottomSheetFragment"
+            app:destination="@id/subredditTimeframeBottomSheetFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/subredditTimeframeBottomSheetFragment"
+        android:name="com.example.redditviewer.ui.SubredditTimeframeBottomSheetFragment"
+        android:label="SubredditTimeframeBottomSheetFragment" >
+        <action
+            android:id="@+id/action_subredditTimeframeBottomSheetFragment_to_subredditSortBottomSheetFragment2"
+            app:destination="@id/subredditSortBottomSheetFragment2" />
+    </dialog>
+    <fragment
+        android:id="@+id/imageGalleryFragment"
+        android:name="com.example.redditviewer.ui.ImageGalleryFragment"
+        android:label="ImageGalleryFragment" >
+        <argument
+            android:name="images"
+            app:argType="string[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.redditviewer.ui.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_subredditActivity"
+            app:destination="@id/subredditActivity"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/postCommentsFragment"
+        android:name="com.example.redditviewer.ui.PostCommentsFragment"
+        android:label="PostCommentsFragment" >
+        <argument
+            android:name="post"
+            app:argType="com.example.redditviewer.network.Post" />
+        <action
+            android:id="@+id/action_postCommentsFragment_to_imageGalleryFragment"
+            app:destination="@id/imageGalleryFragment" />
+        <action
+            android:id="@+id/action_postCommentsFragment_to_subredditActivity"
+            app:destination="@id/subredditActivity" />
+    </fragment>
+    <dialog
+        android:id="@+id/userInfoBottomSheetFragment"
+        android:name="com.example.redditviewer.ui.UserInfoBottomSheetFragment"
+        android:label="UserInfoBottomSheetFragment" >
+        <action
+            android:id="@+id/action_userInfoBottomSheetFragment_to_fragmentLogin2"
+            app:destination="@id/fragmentLogin2"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </dialog>
+    <fragment
+        android:id="@+id/fragmentLogin2"
+        android:name="com.example.redditviewer.ui.LoginFragment"
+        android:label="FragmentLogin" >
+        <action
+            android:id="@+id/action_fragmentLogin2_to_subredditActivity"
+            app:destination="@id/subredditActivity"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="needsRevoke"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+
+</navigation>

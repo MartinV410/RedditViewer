@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    >
+
+    <TextView
+        android:id="@+id/timeframe_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/choose_timeframe"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indicator" />
+
+    <LinearLayout
+        android:id="@+id/indicator"
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:orientation="horizontal"
+        android:background="@drawable/dialog_indicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeframe_title">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subreddit_timeframe_hour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray_1"
+            android:paddingHorizontal="10dp"
+            android:text="@string/hour"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/radius_small"
+            app:icon="@drawable/outline_watch_later_24"
+            app:iconPadding="20dp"
+            app:iconSize="@dimen/icon_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subreddit_timeframe_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray_1"
+            android:paddingHorizontal="10dp"
+            android:text="@string/day"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/radius_small"
+            app:icon="@drawable/outline_calendar_today_24"
+            app:iconPadding="20dp"
+            app:iconSize="@dimen/icon_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subreddit_timeframe_hour" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subreddit_timeframe_week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray_1"
+            android:paddingHorizontal="10dp"
+            android:text="@string/week"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/radius_small"
+            app:icon="@drawable/outline_today_24"
+            app:iconPadding="20dp"
+            app:iconSize="@dimen/icon_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subreddit_timeframe_day" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subreddit_timeframe_month"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray_1"
+            android:paddingHorizontal="10dp"
+            android:text="@string/month"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/radius_small"
+            app:icon="@drawable/outline_date_range_24"
+            app:iconPadding="20dp"
+            app:iconSize="@dimen/icon_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subreddit_timeframe_week" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subreddit_timeframe_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray_1"
+            android:paddingHorizontal="10dp"
+            android:text="@string/year"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/radius_small"
+            app:icon="@drawable/outline_calendar_month_24"
+            app:iconPadding="20dp"
+            app:iconSize="@dimen/icon_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subreddit_timeframe_month" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subreddit_timeframe_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray_1"
+            android:paddingHorizontal="10dp"
+            android:text="@string/all"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/radius_small"
+            app:icon="@drawable/outline_view_timeline_24"
+            app:iconPadding="20dp"
+            app:iconSize="@dimen/icon_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subreddit_timeframe_year" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">RedditViewer</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="share">Share</string>
+    <string name="join">Join</string>
+    <string name="joined">Joined</string>
+    <string name="about">About</string>
+    <string name="wiki">Wiki</string>
+    <string name="all">All</string>
+    <string name="frontpage">Frontpage</string>
+    <string name="popular">Popular</string>
+    <string name="showing_all_subreddits">Showing all subreddits posts</string>
+    <string name="showing_popular_posts">Showing popular posts</string>
+    <string name="showing_subscribed">Showing your subscribed subreddits posts</string>
+    <string name="hot">Hot</string>
+    <string name="new_s">New</string>
+    <string name="rising">Rising</string>
+    <string name="top">Top</string>
+    <string name="subreddit_sort">Subreddit sort</string>
+    <string name="choose_timeframe">Choose timeframe</string>
+    <string name="hour">Hour</string>
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="controversial">Controversial</string>
+    <string name="empty" />
+    <string name="feeds">Feeds</string>
+    <string name="subscribed">Subscribed</string>
+    <string name="x">X</string>
+    <string name="search">Search</string>
+    <string name="log_off">Log off</string>
+    <string name="log_in_to_reddit">Log in to Reddit</string>
+    <string name="login">Login</string>
+    <string name="searched_results">Searched results</string>
+</resources>

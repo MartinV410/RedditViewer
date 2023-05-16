@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="subscribed"
+            type="com.example.redditviewer.network.Subscribed"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/search_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_item_bg"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingVertical="5dp">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/search_item_image"
+            android:layout_width="@dimen/icon_medium"
+            android:layout_height="@dimen/icon_medium"
+            android:scaleType="centerCrop"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/rounded_image"
+
+            app:iconUrl="@{subscribed.iconUrl}"/>
+
+        <TextView
+            android:id="@+id/search_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@{subscribed.namePrefixed}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/search_item_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/search_item_unsubscribe"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="@color/red"-->
+<!--            android:minWidth="0dp"-->
+<!--            android:minHeight="0dp"-->
+<!--            android:inset="0dp"-->
+<!--            android:paddingHorizontal="15dp"-->
+<!--            android:text="@string/x"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="@dimen/text_small"-->
+<!--            app:cornerRadius="@dimen/radius_small"-->
+
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
